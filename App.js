@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen'
+import Discover from './screens/Discover';
+import ItemScreen from './screens/ItemScreen';
+// import { NativeWindStyleSheet } from 'nativewind'
+
+// NativeWindStyleSheet.setOutput({
+//   default: 'native',
+// })
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Discover' component={Discover} />
+        <Stack.Screen name='Detail' component={ItemScreen} />
+        <Stack.Screen name='Home' component={HomeScreen} />
+      </Stack.Navigator>
+      <StatusBar style='auto' />
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
